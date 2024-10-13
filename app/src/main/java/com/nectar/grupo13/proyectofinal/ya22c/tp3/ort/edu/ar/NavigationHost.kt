@@ -1,7 +1,6 @@
 package com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar
 
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavDestination
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.NavHostController

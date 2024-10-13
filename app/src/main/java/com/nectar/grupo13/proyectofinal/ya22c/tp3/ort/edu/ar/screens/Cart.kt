@@ -1,18 +1,9 @@
 package com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.screens
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
@@ -20,15 +11,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Divider
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -79,16 +62,15 @@ fun Cart() {
             ) {
                 LazyColumn(
                     contentPadding = PaddingValues(horizontal = 8.dp),
-                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                    verticalArrangement = Arrangement.spacedBy(8.dp),
+                    modifier = Modifier.weight(1f)
                 ) {
                     items(CartListItems) { cartItem ->
                         CartItem(cartItem)
                         Divider(color = Color.LightGray, thickness = 1.dp)
                     }
-                    item {
-                        CheckoutSection(totalPrice = CartListItems.sumByDouble { it.price })
-                    }
                 }
+                CheckoutButtonScreen(totalPrice = CartListItems.sumByDouble { it.price })
             }
         },
     )
@@ -140,7 +122,7 @@ fun CartItem(product: CartData) {
                 IconButton(
                     onClick = { /* Remove action */ },
                     modifier = Modifier
-                        .border(1.dp, Color.Black, shape = RoundedCornerShape(12.dp))
+                        .border(1.dp, Color.LightGray, shape = RoundedCornerShape(12.dp))
                 ) {
                     Icon(
                         painter = painterResource(id = R.drawable.remove),
@@ -161,7 +143,7 @@ fun CartItem(product: CartData) {
                 IconButton(
                     onClick = { /* Add action */ },
                     modifier = Modifier
-                        .border(1.dp, Color.Black, shape = RoundedCornerShape(12.dp))
+                        .border(1.dp, Color.LightGray, shape = RoundedCornerShape(12.dp))
                 ) {
                     Icon(Icons.Default.Add, contentDescription = "Add", tint = Color(83, 177, 117))
                 }
@@ -183,11 +165,10 @@ fun CartItem(product: CartData) {
 
 
 @Composable
-fun CheckoutSection(totalPrice: Double) {
+fun CheckoutButtonScreen(totalPrice: Double) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .height(300.dp)
             .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -195,18 +176,34 @@ fun CheckoutSection(totalPrice: Double) {
             onClick = { /* Acción de checkout */ },
             modifier = Modifier
                 .height(70.dp)
-                .width(364.dp)
+                .width(380.dp)
                 .border(
                     width = 10.dp,
                     color = Color.Transparent,
                     shape = CircleShape
                 ),
             colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF53B175)),
-            shape = RoundedCornerShape(12.dp)
+            shape = RoundedCornerShape(16.dp)
         ) {
-            Text("Go to Checkout", fontSize = 16.sp)
-            Spacer(modifier = Modifier.width(8.dp))
-            Text(text = "$$totalPrice", color = Color.White, fontSize = 16.sp)
+            Box(
+                modifier = Modifier.fillMaxWidth(),
+                contentAlignment = Alignment.Center
+            ) {
+                Text("Go to Checkout", fontSize = 20.sp)
+                Row(
+                    modifier = Modifier.align(Alignment.CenterEnd),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = "$$totalPrice",
+                        color = Color.White,
+                        fontSize = 16.sp,
+                        modifier = Modifier
+                            .background(Color(72, 158, 103))
+                            .padding(horizontal = 8.dp, vertical = 4.dp)
+                    )
+                }
+            }
         }
     }
 }

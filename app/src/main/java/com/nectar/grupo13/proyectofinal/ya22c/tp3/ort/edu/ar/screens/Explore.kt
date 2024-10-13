@@ -1,40 +1,17 @@
 package com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.screens
 
 import android.util.Log
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.*
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -49,6 +26,7 @@ import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.data.dataExplorer.E
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.data.dataExplorer.ExploreListItems
 
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Explore() {
     var searchText by remember { mutableStateOf("") }
@@ -90,21 +68,27 @@ fun Explore() {
                     onValueChange = { searchText = it },
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(8.dp),
+                        .padding(8.dp)
+                        .background(Color(242, 243, 242)),
                     placeholder = { Text("Search Store") },
                     leadingIcon = {
                         Icon(Icons.Default.Search, contentDescription = "Search Icon")
                     },
                     trailingIcon = {
                         IconButton(onClick = { /* Acción del botón de filtrado */ }) {
-                           Icon(
-                                    painter = painterResource(id = R.drawable.filter),
-                                    contentDescription = "Filter Icon",
-                                    modifier = Modifier.size(20.dp)
+                            Icon(
+                                painter = painterResource(id = R.drawable.filter),
+                                contentDescription = "Filter Icon",
+                                modifier = Modifier.size(20.dp),
                             )
                         }
                     },
-                    shape = RoundedCornerShape(16.dp)
+                    shape = RoundedCornerShape(16.dp),
+                    colors = TextFieldDefaults.textFieldColors(
+                        containerColor = Color(242, 243, 242),
+                        focusedIndicatorColor = Color.Transparent,
+                        unfocusedIndicatorColor = Color.Transparent
+                    )
                 )
                 LazyVerticalGrid(
                     columns = GridCells.Fixed(2),

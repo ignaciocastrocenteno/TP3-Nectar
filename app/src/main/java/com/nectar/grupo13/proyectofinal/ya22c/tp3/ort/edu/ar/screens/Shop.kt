@@ -1,20 +1,8 @@
 package com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.screens
 
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.*
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -22,16 +10,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -46,6 +25,7 @@ import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.R
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.data.dataShop.Fruit
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.data.dataShop.FruitListItems
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.text.style.TextOverflow
 
 
 @Composable
@@ -99,10 +79,10 @@ fun Shop() {
                     FreshVegetableBanner()
                 }
                 item {
-                    Spacer(modifier = Modifier.height(16.dp)) // Add space below the banner
+                    Spacer(modifier = Modifier.height(16.dp))
                 }
                 item {
-                    Spacer(modifier = Modifier.height(8.dp)) // Add margin above Exclusive Offer
+                    Spacer(modifier = Modifier.height(8.dp))
                 }
                 item {
                     Row(
@@ -117,7 +97,7 @@ fun Shop() {
                             fontSize = 22.sp,
                             fontWeight = FontWeight.Bold,
                             modifier = Modifier
-                                .padding(start = 8.dp) // Align with fruit cards
+                                .padding(start = 8.dp)
                         )
                         Text(
                             text = "See all",
@@ -136,7 +116,7 @@ fun Shop() {
                     }
                 }
                 item {
-                    Spacer(modifier = Modifier.height(8.dp)) // Add margin above Best Selling
+                    Spacer(modifier = Modifier.height(8.dp))
                 }
                 item {
                     Row(
@@ -151,7 +131,7 @@ fun Shop() {
                             fontSize = 22.sp,
                             fontWeight = FontWeight.Bold,
                             modifier = Modifier
-                                .padding(start = 8.dp) // Align with fruit cards
+                                .padding(start = 8.dp)
                         )
                         Text(
                             text = "See all",
@@ -178,10 +158,10 @@ fun Shop() {
 @Composable
 fun FreshVegetableBanner() {
     Image(
-        painter = painterResource(id = R.drawable.banner), // Use the banner.png image resource ID
+        painter = painterResource(id = R.drawable.banner),
         contentDescription = "Fresh Vegetables banner",
         contentScale = ContentScale.Crop,
-        modifier = Modifier.height(130.dp) // Set desired banner height
+        modifier = Modifier.height(130.dp)
     )
 }
 
@@ -194,11 +174,11 @@ fun ProductCard(product: Fruit) {
 
     Card(
         modifier = Modifier
-            .padding(horizontal = 15.dp, vertical = 8.dp) // Increase horizontal padding
-            .width(173.32.dp)
+            .padding(horizontal = 15.dp, vertical = 8.dp)
+            .width(200.dp)
             .height(240.51.dp)
-            .border(1.dp, Color.LightGray, shape = RoundedCornerShape(16.dp)),
-        colors = CardDefaults.cardColors(containerColor = Color.Transparent), // Set background to transparent
+            .border(1.dp, Color(226, 226, 226), shape = RoundedCornerShape(16.dp)),
+        colors = CardDefaults.cardColors(containerColor = Color.Transparent),
     ) {
         Column(
             modifier = Modifier.fillMaxSize(),
@@ -217,14 +197,30 @@ fun ProductCard(product: Fruit) {
                         // navegar a la pantalla de detalles del producto
                     }
             )
-            Text(
-                text = product.title,
-                style = MaterialTheme.typography.bodyLarge.copy(
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 20.sp
-                ),
-                modifier = Modifier.padding(8.dp)
-            )
+            Column(
+                modifier = Modifier
+                    .padding(8.dp)
+                    .fillMaxWidth(),
+                horizontalAlignment = Alignment.Start
+            ) {
+                Text(
+                    text = product.title,
+                    style = MaterialTheme.typography.bodyLarge.copy(
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 20.sp
+                    ),
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
+                Text(
+                    text = product.content,
+                    style = MaterialTheme.typography.bodyLarge.copy(
+                        fontSize = 16.sp,
+                        color = Color(124, 124, 124)
+                    ),
+                    modifier = Modifier.padding(top = 4.dp)
+                )
+            }
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
