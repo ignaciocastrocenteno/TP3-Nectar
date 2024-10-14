@@ -38,6 +38,7 @@ android {
     }
     buildFeatures {
         compose = true
+        viewBinding = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
@@ -50,20 +51,49 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
+
+    // Lifecycle KTX extensions for managing lifecycles
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
+
+    // Ensuring version compatibility, throughout the entire project solution
     implementation(platform(libs.androidx.compose.bom))
+
+    // Core UI elements for Compose
     implementation(libs.androidx.ui)
+
+    // Graphics functionalities for Compose.
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.material3)
+    implementation(libs.material3)
+
+    // Core Espresso library for UI testing.
+    implementation(libs.androidx.espresso.core)
+    implementation(libs.androidx.constraintlayout.compose)
+
+    // Coil-Compose library
+    implementation(libs.coil.compose)
+    implementation(libs.coil3.coil.compose)
+    implementation(libs.coil.network.okhttp)
+
+    // Retrofit for API calls
+    implementation(libs.retrofit)
+
+    // Gson for JSON serialization/deserialization of information
+    implementation(libs.converter.gson)
+
+    // Coroutines for asynchronous calls
+    implementation(libs.kotlinx.coroutines.android)
+
+    // J-Unit Testing Framework
     testImplementation(libs.junit)
+
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
+
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 }
