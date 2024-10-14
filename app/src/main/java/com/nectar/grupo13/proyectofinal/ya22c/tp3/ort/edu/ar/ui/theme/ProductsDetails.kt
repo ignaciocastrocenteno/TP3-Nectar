@@ -20,6 +20,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 
@@ -69,7 +70,7 @@ import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.R
 
                 ReviewSection()
 
-                Button()
+                Button("Add To Basket")
                
             }
         }
@@ -189,8 +190,8 @@ fun  ImageSection() {
                     .fillMaxWidth()
                     .fillMaxHeight()
                     .background(
-                        color = Color.LightGray,
-                        shape = RoundedCornerShape(18.dp)
+                        color = colorResource(id = R.color.gray ),
+                                shape = RoundedCornerShape (18.dp)
                     )// Aplicar sombra
             )
 
@@ -281,26 +282,6 @@ fun Spacer(){
 }
 
 @Composable
-fun Button(){
-    Button(
-        onClick = { /* Acción de checkout */ },
-        modifier = Modifier
-            .height(70.dp)
-            .width(364.dp)
-            .border(
-                width = 10.dp,
-                color = Color.Transparent,
-                shape = CircleShape
-            ),
-        colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF53B175)),
-        shape = RoundedCornerShape(12.dp)
-    ) {
-        Text("Add To Basket", fontSize = 16.sp)
-        Spacer(modifier = Modifier.width(8.dp))
-    }
-}
-
-@Composable
 fun ReviewSection() {
     Row(
         modifier = Modifier
@@ -328,7 +309,7 @@ fun Rating(rating: Float) {
             Icon(
                 imageVector = if (index < rating) Icons.Filled.Star else Icons.Outlined.Star,
                 contentDescription = "Estrella",
-                tint = Color.Yellow,
+                tint = colorResource(id = R.color.orange),
                 modifier = Modifier
                     .padding(1.dp),
             )

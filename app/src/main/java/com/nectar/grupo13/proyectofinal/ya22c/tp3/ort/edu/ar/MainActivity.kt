@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.ui.theme.FilterScreen
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.ui.theme.NectarTheme
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.ui.theme.ProductDetailScreen
 
@@ -25,7 +26,8 @@ class MainActivity : ComponentActivity() {
                         name = "Android",
                         modifier = Modifier.padding(innerPadding)
                     )
-                    ProductDetails()
+                    //ProductDetails()
+                    Filter()
 
                 }
             }
@@ -49,7 +51,7 @@ fun GreetingPreview() {
         Greeting("Android")
     }
 }
-
+/*
 @Composable
 fun ProductDetails() {
     ProductDetailScreen()
@@ -60,5 +62,18 @@ fun ProductDetails() {
 fun ProductDetailsPreview() {
     NectarTheme {
         ProductDetails()
+    }
+}
+*/
+@Composable
+fun Filter() {
+    FilterScreen()
+}
+
+@Preview(showBackground = true)
+@Composable
+fun FilterScreenPreview() {
+    NectarTheme {
+        Filter()
     }
 }
