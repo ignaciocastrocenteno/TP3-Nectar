@@ -1,17 +1,12 @@
 package com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.ui.theme
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
-import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.KeyboardArrowDown
-import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.outlined.Star
 import androidx.compose.material3.*
@@ -23,18 +18,16 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-
-
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.R
 
     @Composable
     fun ProductDetailScreen() {
         Scaffold(
-            topBar = { MyTopBar() }
+            topBar = { MyTopBar("Product Details") }
         ) { innerPadding ->
             Column(
                 modifier = Modifier
@@ -75,25 +68,6 @@ import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.R
             }
         }
     }
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun MyTopBar() {
-    TopAppBar(
-        title = { Text(text = "Product Detail",
-            modifier = Modifier.fillMaxWidth(),
-            fontSize = 28.sp,
-            fontWeight = FontWeight.Bold,
-            textAlign = TextAlign.Center,
-            style = MaterialTheme.typography.headlineMedium) },
-
-        navigationIcon = {
-            IconButton(onClick = { /* Acción al presionar el botón de retroceso */ }) {
-                Icon(imageVector = Icons.AutoMirrored.Filled.KeyboardArrowLeft, contentDescription = "Back")
-            }
-        }
-    )
-}
 
 @Preview(showBackground = true)
 @Composable
@@ -181,32 +155,31 @@ fun  ImageSection() {
                 .height(250.dp),
             contentAlignment = Alignment.TopEnd
         ) {
-            // Imagen del producto con sombra
+
             Image(
-                painter = painterResource(id = R.drawable.apple),  // Reemplaza con tu imagen
+                painter = painterResource(id = R.drawable.apple),
                 contentDescription = "Red Apple",
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .fillMaxWidth()
                     .fillMaxHeight()
                     .background(
-                        color = colorResource(id = R.color.gray ),
-                                shape = RoundedCornerShape (18.dp)
-                    )// Aplicar sombra
+                        color = colorResource(id = R.color.gray),
+                        shape = RoundedCornerShape(18.dp)
+                    )
             )
-
-            // Icono de compartir en la esquina superior derecha
             IconButton(
                 onClick = { /* lógica para compartir */ },
                 modifier = Modifier
                     .padding(10.dp)
-                    .size(18.dp) // Tamaño del icono
-
+                    .size(18.dp)
             ) {
-                Icon(
-                    imageVector = Icons.Default.Share,
-                    contentDescription = "Share",
-                    tint = Color.Black
+                Image(
+                    modifier = Modifier
+                    .fillMaxWidth(),
+                    painter = painterResource(id = R.drawable.share),
+                    contentDescription = "share",
+
                 )
             }
         }
@@ -248,12 +221,14 @@ fun  MainSection() {
     }
     Spacer()
 
-    // Botones para aumentar o disminuir cantidad
     Row(
         verticalAlignment = Alignment.CenterVertically
     ) {
         IconButton(onClick = { /* lógica para disminuir */ }) {
-            Icon(imageVector = Icons.Default.KeyboardArrowDown, contentDescription = "Decrease")
+            Image(
+                painter = painterResource(id = R.drawable.remove),
+                contentDescription = "Decrease",
+            )
         }
         Text(
             text = "1",
@@ -262,7 +237,10 @@ fun  MainSection() {
             modifier = Modifier.padding(horizontal = 16.dp)
         )
         IconButton(onClick = { /* lógica para aumentar */ }) {
-            Icon(imageVector = Icons.Default.Add, contentDescription = "Increase")
+            Image(
+                painter = painterResource(id = R.drawable.add),
+                contentDescription = "Increase",
+            )
         }
         // Precio del producto
         Text(
@@ -294,7 +272,7 @@ fun ReviewSection() {
             style = MaterialTheme.typography.headlineSmall
         )
         Spacer(modifier = Modifier.weight(1f))
-        Rating(rating = 4f) // Ajusta la calificación según sea necesario
+        Rating(rating = 4f)
         Icon(
             imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
             contentDescription = "Ver más"

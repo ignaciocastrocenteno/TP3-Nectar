@@ -11,6 +11,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.ui.theme.CategoriesScreen
+import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.ui.theme.CheckoutModal
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.ui.theme.FilterScreen
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.ui.theme.NectarTheme
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.ui.theme.ProductDetailScreen
@@ -27,7 +29,9 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier.padding(innerPadding)
                     )
                     //ProductDetails()
-                    Filter()
+                    //Filter()
+                    //Checkout()
+                    Categories()
 
                 }
             }
@@ -64,7 +68,7 @@ fun ProductDetailsPreview() {
         ProductDetails()
     }
 }
-*/
+
 @Composable
 fun Filter() {
     FilterScreen()
@@ -75,5 +79,31 @@ fun Filter() {
 fun FilterScreenPreview() {
     NectarTheme {
         Filter()
+    }
+}
+
+@Composable
+fun Checkout() {
+    CheckoutModal()
+}
+
+@Preview(showBackground = true)
+@Composable
+fun CheckoutScreenPreview() {
+    NectarTheme {
+        Checkout()
+    }
+}
+*/
+@Composable
+fun Categories() {
+    CategoriesScreen()
+}
+
+@Preview(showBackground = true)
+@Composable
+fun CategoriesScreenPreview() {
+    NectarTheme {
+        Categories()
     }
 }
