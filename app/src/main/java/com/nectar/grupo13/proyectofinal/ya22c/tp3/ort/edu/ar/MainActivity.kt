@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.ui.theme.NectarTheme
+import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.ui.theme.ProductDetailScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,10 +25,13 @@ class MainActivity : ComponentActivity() {
                         name = "Android",
                         modifier = Modifier.padding(innerPadding)
                     )
+                    ProductDetails()
+
                 }
             }
         }
     }
+
 }
 
 @Composable
@@ -43,5 +47,18 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 fun GreetingPreview() {
     NectarTheme {
         Greeting("Android")
+    }
+}
+
+@Composable
+fun ProductDetails() {
+    ProductDetailScreen()
+}
+
+@Preview(showBackground = true)
+@Composable
+fun ProductDetailsPreview() {
+    NectarTheme {
+        ProductDetails()
     }
 }
