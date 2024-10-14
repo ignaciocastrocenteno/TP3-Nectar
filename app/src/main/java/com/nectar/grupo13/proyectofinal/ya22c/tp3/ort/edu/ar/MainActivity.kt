@@ -55,7 +55,7 @@ class MainActivity : ComponentActivity() {
 //                SelectLocationScreen()
             }
         }
-}
+    }
 
 // Converting PX to DP for easier usage of units
 @Composable
