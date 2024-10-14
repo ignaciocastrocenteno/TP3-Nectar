@@ -1,7 +1,9 @@
 package com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.ui.theme
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
@@ -25,6 +27,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.R
 
     @Composable
@@ -40,29 +43,29 @@ import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.R
             ) {
                 ImageSection()
 
-                Spacer()
+                Spacer(modifier = Modifier.height(8.dp))
 
                 MainSection()
 
                 HorizontalDivider()
 
-                Spacer()
+                Spacer(modifier = Modifier.height(8.dp))
 
                 ProductDetailsSection()
 
-                Spacer()
+                Spacer(modifier = Modifier.height(8.dp))
 
                 HorizontalDivider()
 
-                Spacer()
+                Spacer(modifier = Modifier.height(8.dp))
 
                 NutritionsSection()
 
-                Spacer()
+                Spacer(modifier = Modifier.height(8.dp))
 
                 HorizontalDivider()
 
-                Spacer()
+                Spacer(modifier = Modifier.height(8.dp))
 
                 ReviewSection()
 
@@ -278,13 +281,20 @@ fun Spacer(){
 @Composable
 fun Button(){
     Button(
-        onClick = { /* lógica para añadir al carrito */ },
+        onClick = { /* Acción de checkout */ },
         modifier = Modifier
-            .fillMaxWidth()
-            .height(48.dp),
-        shape = RoundedCornerShape(8.dp)
+            .height(70.dp)
+            .width(364.dp)
+            .border(
+                width = 10.dp,
+                color = Color.Transparent,
+                shape = CircleShape
+            ),
+        colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF53B175)),
+        shape = RoundedCornerShape(12.dp)
     ) {
-        Text(text = "Add To Basket", style = MaterialTheme.typography.labelLarge)
+        Text("Add To Basket", fontSize = 16.sp)
+        Spacer(modifier = Modifier.width(8.dp))
     }
 }
 
