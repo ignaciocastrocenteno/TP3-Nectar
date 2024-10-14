@@ -1,18 +1,13 @@
-package com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.ui.theme
+package com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
@@ -22,21 +17,23 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CategoriesScreen(){
-    Scaffold(
-        topBar = { MyTopBar("Beverages") }
-    ) { innerPadding ->
-        Column(
+fun MyTopBar(text: String) {
+    TopAppBar(
+        title = { Text(text = text,
             modifier = Modifier
-                .fillMaxSize()
-                .padding(innerPadding)
-                .padding(16.dp)
-        ) {
+                .fillMaxWidth(),
+            fontSize = 28.sp,
+            fontWeight = FontWeight.Bold,
+            textAlign = TextAlign.Center,
+            style = MaterialTheme.typography.headlineMedium) },
+            modifier = Modifier.padding(end = 40.dp),
 
-
+        navigationIcon = {
+            IconButton(onClick = { /* Acción al presionar el botón de retroceso */ }) {
+                Icon(imageVector = Icons.AutoMirrored.Filled.KeyboardArrowLeft, contentDescription = "Back")
+            }
         }
-    }
-
+    )
 }
-

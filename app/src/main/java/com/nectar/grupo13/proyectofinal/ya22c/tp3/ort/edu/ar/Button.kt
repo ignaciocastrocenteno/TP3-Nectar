@@ -1,4 +1,4 @@
-package com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.ui.theme
+package com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.fillMaxWidth
