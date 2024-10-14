@@ -25,8 +25,6 @@ import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.R
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.data.dataExplorer.ExploreItem
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.data.dataExplorer.ExploreListItems
 
-
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Explore() {
     var searchText by remember { mutableStateOf("") }
@@ -84,11 +82,11 @@ fun Explore() {
                         }
                     },
                     shape = RoundedCornerShape(16.dp),
-                    colors = TextFieldDefaults.textFieldColors(
-                        containerColor = Color(242, 243, 242),
-                        focusedIndicatorColor = Color.Transparent,
-                        unfocusedIndicatorColor = Color.Transparent
-                    )
+//                    colors = TextFieldDefaults.textFieldColors(
+//                        containerColor = Color(242, 243, 242),
+//                        focusedIndicatorColor = Color.Transparent,
+//                        unfocusedIndicatorColor = Color.Transparent
+//                    )
                 )
                 LazyVerticalGrid(
                     columns = GridCells.Fixed(2),

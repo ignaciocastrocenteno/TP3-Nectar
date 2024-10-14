@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
+import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.ProductDetailScreen
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.ui.theme.NectarTheme
 
 
@@ -37,12 +38,12 @@ class MainActivity : ComponentActivity() {
 //                Onboarding()
 //            }
 
-// SIGN-IN SCREEN
-            Box(
-                modifier = Modifier.background(color = Color(0xFFFFFFFF)), // Equal the form fields' color
-            ) {
-                SignInScreen()
-            }
+//// SIGN-IN SCREEN
+//            Box(
+//                modifier = Modifier.background(color = Color(0xFFFFFFFF)), // Equal the form fields' color
+//            ) {
+//                SignInScreen()
+//            }
 
 //// SIGN-UP SCREEN
 //            Box(
@@ -53,6 +54,7 @@ class MainActivity : ComponentActivity() {
 
 //// SELECT LOCATION SCREEN
 //                SelectLocationScreen()
+                ProductDetailScreen()
             }
         }
     }

@@ -54,7 +54,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
 
     // Lifecycle KTX extensions for managing lifecycles
-    implementation(libs.androidx.lifecycle.runtime.ktx)
+//    implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
 
     // Ensuring version compatibility, throughout the entire project solution
@@ -67,6 +67,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.material3)
+    implementation(libs.androidx.material3.vversion)
 
     // Core Espresso library for UI testing.
     implementation(libs.androidx.espresso.core)
@@ -85,6 +86,8 @@ dependencies {
 
     // Coroutines for asynchronous calls
     implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.androidx.navigation.runtime.ktx)
+    implementation(libs.androidx.navigation.compose)
 
     // J-Unit Testing Framework
     testImplementation(libs.junit)
