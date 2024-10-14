@@ -81,6 +81,8 @@ fun MyTopBar() {
     TopAppBar(
         title = { Text(text = "Product Detail",
             modifier = Modifier.fillMaxWidth(),
+            fontSize = 28.sp,
+            fontWeight = FontWeight.Bold,
             textAlign = TextAlign.Center,
             style = MaterialTheme.typography.headlineMedium) },
 
