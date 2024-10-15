@@ -3,7 +3,6 @@ package com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.unit.Dp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.compose.composable
@@ -18,6 +17,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.Dp
 import androidx.navigation.NavHostController
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.data.NavigationHost
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.screens.BottomNavigation

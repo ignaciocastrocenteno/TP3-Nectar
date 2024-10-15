@@ -11,8 +11,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.ui.theme.gilroyFontFamily
 
 @Composable
 fun Button(text: String){
@@ -27,11 +29,14 @@ fun Button(text: String){
                 color = Color.Transparent,
                 shape = CircleShape
             ),
-
         colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF53B175)),
-        shape = RoundedCornerShape(12.dp)
+        shape = RoundedCornerShape(12.dp),
     ) {
-        Text(text, fontSize = 16.sp)
+        Text(text,
+            fontSize = 16.sp,
+            fontFamily = gilroyFontFamily,
+            fontWeight = FontWeight.W700
+        )
         androidx.compose.foundation.layout.Spacer(modifier = Modifier.width(8.dp))
     }
 }

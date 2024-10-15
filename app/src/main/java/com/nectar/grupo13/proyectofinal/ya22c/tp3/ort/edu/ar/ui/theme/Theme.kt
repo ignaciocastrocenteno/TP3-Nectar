@@ -80,7 +80,7 @@ val gilroyFontFamily = FontFamily(
     Font(R.font.gilroy_bold, FontWeight.W700, FontStyle.Normal),
     Font(R.font.gilroy_bold_italic, FontWeight.W700, FontStyle.Italic),
     Font(R.font.gilroy_extra_bold, FontWeight.W800, FontStyle.Normal),
-    Font(R.font.gilroy_heavy, FontWeight.W800, FontStyle.Normal),
+    Font(R.font.gilroy_heavy, FontWeight.W900, FontStyle.Normal),
 )
 
 @Composable

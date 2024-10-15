@@ -18,7 +18,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.R
-
+import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.ui.theme.gilroyFontFamily
 
 @Composable
 fun CheckoutModal() {
@@ -27,6 +27,7 @@ fun CheckoutModal() {
 
 @Composable
 fun CheckoutContent() {
+    // Checkout Wrapper
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -37,6 +38,7 @@ fun CheckoutContent() {
 
     ) {
         Row {
+            // Main Title
             Text(
                 text = "Checkout",
                 style = MaterialTheme.typography.headlineMedium,
@@ -50,22 +52,27 @@ fun CheckoutContent() {
         }
         HorizontalDivider()
 
+        // Delivery Method
         CheckoutOptionRow(title = "Delivery", detail = "Select Method")
 
         HorizontalDivider()
 
+        // Payment method (credit card, debit card)
         CheckoutOptionRowIcon(title = "Payment")
 
         HorizontalDivider()
 
+        // Promo Code Dropdown menu
         CheckoutOptionRow(title = "Promo Code", detail = "Pick discount")
 
         HorizontalDivider()
 
+        // Total Transaction Amount
         CheckoutOptionRow(title = "Total Cost", detail = "$13.97")
 
         HorizontalDivider()
 
+        // TOS & Conditions
         Row {
             val text = buildAnnotatedString {
                 append("By placing an order you agree to our\n")
@@ -75,6 +82,7 @@ fun CheckoutContent() {
             }
             Text(text)
         }
+        // Place Order Button
         Button("Place Order")
     }
 }
@@ -92,7 +100,8 @@ fun CheckoutOptionRow(title: String, detail: String) {
             textAlign = TextAlign.End,
             text = detail,
             style = MaterialTheme.typography.bodyLarge,
-            fontWeight = FontWeight.Bold
+            fontFamily = gilroyFontFamily,
+            fontWeight = FontWeight.W700
             )
         Icon(
             imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
@@ -106,12 +115,12 @@ fun CheckoutOptionRowIcon(title: String) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
     ) {
         Text(text = title, style = MaterialTheme.typography.bodyLarge)
         Spacer(modifier = Modifier.weight(1f))
         Image(
-            painter = painterResource(id = R.drawable.creditcard),
+            painter = painterResource(id = R.drawable.mastercard_logo),
             contentDescription = "Increase",
         )
         Icon(

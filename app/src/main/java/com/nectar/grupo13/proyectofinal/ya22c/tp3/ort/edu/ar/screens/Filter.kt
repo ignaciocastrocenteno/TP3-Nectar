@@ -14,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.ui.res.colorResource
+import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.ui.theme.gilroyFontFamily
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.R
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -30,13 +31,16 @@ fun FilterScreen() {
     var brandIfadChecked by remember { mutableStateOf(false) }
     var brandKaziFarmasChecked by remember { mutableStateOf(false) }
 
+    // Filters - PopUp Wrapper
     Scaffold(
         topBar = {
             TopAppBar(
                 title = {
+                    // Main Title
                     Text(
                         text = "Filters",
-                        fontWeight = FontWeight.Bold,
+                        fontWeight = FontWeight.W700,
+                        fontFamily = gilroyFontFamily,
                         modifier = Modifier.fillMaxWidth(),
                         textAlign = androidx.compose.ui.text.style.TextAlign.Center
                     )
@@ -60,18 +64,18 @@ fun FilterScreen() {
                 )
 
         ) {
-            // Categorías
+            // Categories Section Title
             Text(
                 modifier = Modifier
                     .padding(16.dp),
                 text = "Categories",
                 style = MaterialTheme.typography.headlineSmall,
-                fontWeight = FontWeight.Bold
-
+                fontWeight = FontWeight.W700,
+                fontFamily = gilroyFontFamily,
             )
             Spacer(modifier = Modifier.height(8.dp))
 
-            // Checkboxes de categorías
+            // Categories' checkboxes
             CheckBoxItem(
                 text = "Eggs",
                 isChecked = categoryEggsChecked,
@@ -95,15 +99,16 @@ fun FilterScreen() {
 
             Spacer(modifier = Modifier.height(24.dp))
 
-            // Marcas
+            // Brand Section Title
             Text(
                 text = "Brand",
                 style = MaterialTheme.typography.headlineSmall,
-                fontWeight = FontWeight.Bold
+                fontWeight = FontWeight.W700,
+                fontFamily = gilroyFontFamily,
             )
             Spacer(modifier = Modifier.height(8.dp))
 
-            // Checkboxes de marcas
+            // Brand's checkboxes
             CheckBoxItem(
                 text = "Individual Collection",
                 isChecked = brandCollectionChecked,
@@ -126,9 +131,9 @@ fun FilterScreen() {
             )
 
             Spacer(modifier = Modifier.weight(1f))
-            // Botón de aplicar filtro
-            Button("Apply Filter")
 
+            // 'Apply Filter' button
+            Button("Apply Filter")
         }
     }
 }
@@ -151,7 +156,10 @@ fun CheckBoxItem(text: String, isChecked: Boolean, onCheckedChange: (Boolean) ->
         )
         Spacer(modifier = Modifier.width(8.dp))
         Text(text = text,
-                color = if (isChecked) colorResource(id = R.color.check) else Color.Black)
+                color = if (isChecked) colorResource(id = R.color.check) else Color.Black,
+                fontFamily = gilroyFontFamily,
+                fontWeight = FontWeight.W400
+        )
 
     }
 }
