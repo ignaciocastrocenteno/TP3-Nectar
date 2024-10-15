@@ -1,4 +1,4 @@
-package com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.screens
+package com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar
 
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
@@ -23,6 +23,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.data.dataEgg.Egg
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.data.dataEgg.EggListItems
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.ui.theme.gilroyFontFamily
@@ -30,7 +31,7 @@ import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.ui.theme.gilroyFont
 
 @Preview
 @Composable
-fun SearchScreen() {
+fun SearchScreen(navController: NavController) {
     var searchText by remember { mutableStateOf("") }
 
     // Search Wrapper

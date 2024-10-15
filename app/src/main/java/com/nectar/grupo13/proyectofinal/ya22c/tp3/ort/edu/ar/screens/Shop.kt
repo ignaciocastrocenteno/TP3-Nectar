@@ -27,11 +27,12 @@ import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.data.dataShop.Fruit
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.ui.theme.gilroyFontFamily
 
 @Composable
-fun Shop(navController: NavHostController) {
+fun Shop(navController: NavController) {
     Scaffold(
         topBar = {
             NavigationBar(
@@ -121,7 +122,7 @@ fun Shop(navController: NavHostController) {
                     LazyRow(contentPadding = PaddingValues(horizontal = 8.dp)) {
                         val exclusiveOffers = FruitListItems.take(2)
                         items(exclusiveOffers) { product ->
-                            ProductCard(product)
+                            ProductCard(product, navController)
                         }
                     }
                 }
@@ -156,7 +157,7 @@ fun Shop(navController: NavHostController) {
                     LazyRow(contentPadding = PaddingValues(horizontal = 8.dp)) {
                         val bestSelling = FruitListItems.drop(2)
                         items(bestSelling) { product ->
-                            ProductCard(product)
+                            ProductCard(product, navController)
                         }
                     }
                 }
@@ -177,7 +178,7 @@ fun FreshVegetableBanner() {
 }
 
 @Composable
-fun ProductCard(product: Fruit) {
+fun ProductCard(product: Fruit, navController: NavController) {
     val context = LocalContext.current
     val imageResId = remember(product.image) {
         context.resources.getIdentifier(product.image, "drawable", context.packageName)
@@ -253,7 +254,7 @@ fun ProductCard(product: Fruit) {
                     )
                 )
                 Button(
-                    onClick = { /* Acción al agregar al carrito */ },
+                    onClick = { navController.navigate("productdetails")  },
                     modifier = Modifier
                         .width(75.dp)
                         .height(40.dp),

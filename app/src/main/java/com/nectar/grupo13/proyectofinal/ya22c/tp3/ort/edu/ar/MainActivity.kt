@@ -22,6 +22,7 @@ import androidx.navigation.NavHostController
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.data.NavigationHost
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.screens.BottomNavigation
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.screens.Onboarding
+import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.screens.ProductDetailScreen
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.screens.SelectLocationScreen
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.screens.SignInScreen
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.screens.SignUpScreen

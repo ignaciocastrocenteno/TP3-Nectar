@@ -37,15 +37,15 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.data.dataFavorites.FavouriteItem
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.data.dataFavorites.FavouriteListItems
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.ui.theme.gilroyFontFamily
 
-@Preview
 @Composable
-fun CategoriesScreen(){
+fun CategoriesScreen(navController: NavController){
     Scaffold(
-        topBar = { MyTopBar("Beverages") }
+        topBar = { MyTopBar("Beverages", navController) }
     ) { innerPadding ->
 
             LazyColumn(

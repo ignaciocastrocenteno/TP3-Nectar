@@ -21,12 +21,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.R
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.data.dataExplorer.ExploreItem
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.data.dataExplorer.ExploreListItems
 
 @Composable
-fun Explore() {
+fun Explore(navController: NavController) {
     var searchText by remember { mutableStateOf("") }
 
     Scaffold(
@@ -40,8 +41,7 @@ fun Explore() {
                         .padding(horizontal = 16.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    IconButton(onClick = { /* Acción del menú, como redirirgir a la screen
-                     del search*/ }) {
+                    IconButton(onClick = { }) {
                         Icon(Icons.Default.Menu, contentDescription = "Menú")
                     }
                     Spacer(modifier = Modifier.weight(0.7f))
@@ -73,7 +73,7 @@ fun Explore() {
                         Icon(Icons.Default.Search, contentDescription = "Search Icon")
                     },
                     trailingIcon = {
-                        IconButton(onClick = { /* Acción del botón de filtrado */ }) {
+                        IconButton(onClick = { navController.navigate("filter") }) {
                             Icon(
                                 painter = painterResource(id = R.drawable.filter),
                                 contentDescription = "Filter Icon",
@@ -95,7 +95,7 @@ fun Explore() {
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                     items(ExploreListItems.size) { index ->
-                        ExploreItemCard(ExploreListItems[index])
+                        ExploreItemCard(ExploreListItems[index], navController)
                     }
                 }
             }
@@ -105,7 +105,7 @@ fun Explore() {
 
 
 @Composable
-fun ExploreItemCard(product: ExploreItem) {
+fun ExploreItemCard(product: ExploreItem, navController: NavController) {
     val context = LocalContext.current
     val imageResId = remember(product.image) {
         context.resources.getIdentifier(product.image, "drawable", context.packageName)
@@ -121,8 +121,7 @@ fun ExploreItemCard(product: ExploreItem) {
             .height(200.dp)
             .border(1.dp, Color.LightGray, shape = RoundedCornerShape(16.dp))
             .clickable {
-                // Acción al hacer clic en el recuadro, como por ejemplo
-                // navegar a la categoria en particular
+                navController.navigate("beverages")
             },
         colors = CardDefaults.cardColors(containerColor = backgroundColor),
     ) {

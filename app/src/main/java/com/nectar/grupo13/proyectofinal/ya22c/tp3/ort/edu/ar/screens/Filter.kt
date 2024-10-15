@@ -1,7 +1,9 @@
 package com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.screens
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -14,12 +16,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.ui.theme.gilroyFontFamily
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun FilterScreen() {
+fun FilterScreen(navController: NavController) {
     // Estados para los checkboxes
     var categoryEggsChecked by remember { mutableStateOf(true) }
     var categoryNoodlesChecked by remember { mutableStateOf(false) }
@@ -46,7 +50,7 @@ fun FilterScreen() {
                     )
                 },
                 navigationIcon = {
-                    IconButton(onClick = { /* Acción para cerrar */ }) {
+                    IconButton(onClick = { navController.navigate("explore") }) {
                         Icon(imageVector = Icons.Default.Close, contentDescription = "Close")
                     }
                 }
@@ -133,7 +137,7 @@ fun FilterScreen() {
             Spacer(modifier = Modifier.weight(1f))
 
             // 'Apply Filter' button
-            Button("Apply Filter")
+            ApplyFilterButton("Apply Filter", navController)
         }
     }
 }
@@ -164,9 +168,31 @@ fun CheckBoxItem(text: String, isChecked: Boolean, onCheckedChange: (Boolean) ->
     }
 }
 
-@Preview(showBackground = true)
 @Composable
-fun PreviewFilterScreen() {
-    FilterScreen()
+fun ApplyFilterButton(text: String, navController: NavController){
+    androidx.compose.material3.Button(
+        onClick = { navController.navigate("search") },
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(70.dp)
+            .width(364.dp)
+            .border(
+                width = 10.dp,
+                color = Color.Transparent,
+                shape = CircleShape
+            ),
+
+        colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF53B175)),
+        shape = RoundedCornerShape(12.dp)
+    ) {
+        Text(text, fontSize = 16.sp)
+        Spacer(modifier = Modifier.width(8.dp))
+    }
 }
+
+//@Preview(showBackground = true)
+//@Composable
+//fun PreviewFilterScreen(navController: NavController) {
+//    FilterScreen(navController)
+//}
 

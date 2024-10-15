@@ -18,17 +18,21 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.R
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.ui.theme.gilroyFontFamily
 
 @Composable
-    fun ProductDetailScreen() {
+    fun ProductDetailScreen(navController: NavController) {
         Scaffold(
-            topBar = { MyTopBar("Product Details") }
+            topBar = { MyTopBar("Product Details", navController) }
         ) { innerPadding ->
             Column(
                 modifier = Modifier
@@ -44,19 +48,11 @@ import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.ui.theme.gilroyFont
 
                 HorizontalDivider()
 
-                Spacer(modifier = Modifier.height(8.dp))
-
                 ProductDetailsSection()
-
-                Spacer(modifier = Modifier.height(8.dp))
 
                 HorizontalDivider()
 
-                Spacer(modifier = Modifier.height(8.dp))
-
                 NutritionSection()
-
-                Spacer(modifier = Modifier.height(8.dp))
 
                 HorizontalDivider()
 
@@ -64,16 +60,17 @@ import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.ui.theme.gilroyFont
 
                 ReviewSection()
 
+                Spacer(modifier = Modifier.height(8.dp))
+
                 Button("Add To Basket")
-               
             }
         }
     }
 
-@Preview(showBackground = true)
+//@Preview(showBackground = true)
 @Composable
-fun PreviewProductDetailScreen() {
-    ProductDetailScreen()
+fun PreviewProductDetailScreen(navController: NavController) {
+    ProductDetailScreen(navController)
 }
 
 @Composable
@@ -129,6 +126,7 @@ fun MainSection() {
                 style = MaterialTheme.typography.headlineMedium,
                 fontWeight = FontWeight.W700,
                 fontFamily = gilroyFontFamily,
+                fontSize = 24.sp,
                 modifier = Modifier.fillMaxWidth(),
                 textAlign = TextAlign.Start
             )
@@ -197,9 +195,12 @@ fun ProductDetailsSection() {
     ) {
         Text(
             text = "Product Details",
-            style = MaterialTheme.typography.headlineSmall,
-
-            )
+            style = TextStyle(
+                fontSize = 16.sp,
+                fontFamily = gilroyFontFamily,
+                fontWeight = FontWeight.W500
+            ),
+        )
         Spacer(modifier = Modifier.weight(1f))
         Icon(
             imageVector = Icons.Default.KeyboardArrowDown,
@@ -213,7 +214,11 @@ fun ProductDetailsSection() {
     ) {
         Text(
             text = "Apples are nutritious. Apples may be good for weight loss. Apples may be good for your heart. As part of a healthful and varied diet.",
-            style = MaterialTheme.typography.bodyLarge,
+            style = TextStyle(
+                fontSize = 13.sp,
+                fontFamily = gilroyFontFamily,
+                fontWeight = FontWeight.W500
+            ),
             textAlign = TextAlign.Start,
             modifier = Modifier
                 .fillMaxWidth()
@@ -232,8 +237,11 @@ fun NutritionSection() {
     ) {
         Text(
             text = "Nutritions",
-            style = MaterialTheme.typography.headlineSmall
-
+            style = TextStyle(
+                fontSize = 16.sp,
+                fontFamily = gilroyFontFamily,
+                fontWeight = FontWeight.W500
+            ),
         )
         Spacer(modifier = Modifier.weight(1f))
         Card(
@@ -269,7 +277,11 @@ fun ReviewSection() {
     ) {
         Text(
             text = "Review",
-            style = MaterialTheme.typography.headlineSmall
+            style = TextStyle(
+                fontSize = 16.sp,
+                fontFamily = gilroyFontFamily,
+                fontWeight = FontWeight.W500
+            ),
         )
         Spacer(modifier = Modifier.weight(1f))
         Rating(rating = 4f)

@@ -16,16 +16,17 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.ui.theme.gilroyFontFamily
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MyTopBar(text: String) {
+fun MyTopBar(text: String, navController: NavController) {
     TopAppBar(
         title = { Text(text = text,
             modifier = Modifier
                 .fillMaxWidth(),
-            fontSize = 28.sp,
+            fontSize = 22.sp,
             fontWeight = FontWeight.W700,
             fontFamily = gilroyFontFamily,
             textAlign = TextAlign.Center,
@@ -33,7 +34,7 @@ fun MyTopBar(text: String) {
             modifier = Modifier.padding(end = 40.dp),
 
         navigationIcon = {
-            IconButton(onClick = { /* Acción al presionar el botón de retroceso */ }) {
+            IconButton(onClick = { navController.navigate("shop") }) {
                 Icon(imageVector = Icons.AutoMirrored.Filled.KeyboardArrowLeft, contentDescription = "Back")
             }
         }

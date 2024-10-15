@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.NavHostController
+import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.SearchScreen
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.data.Items.*
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.screens.*
 
@@ -28,8 +29,32 @@ fun NavigationHost(navController: NavHostController) {
         composable(HomeScreen.route) {
             Shop(navController)
         }
+        composable("shop") {
+            Shop(navController)
+        }
         composable(Explore.route) {
-            Explore()
+            Explore(navController)
+        }
+        composable("explore") {
+            Explore(navController)
+        }
+        composable(FiltersPopUp.route) {
+            FilterScreen(navController)
+        }
+        composable("filter") {
+            FilterScreen(navController)
+        }
+        composable(Categories.route) {
+            CategoriesScreen(navController)
+        }
+        composable("beverages") {
+            CategoriesScreen(navController)
+        }
+        composable(Search.route) {
+            SearchScreen(navController)
+        }
+        composable("search") {
+            SearchScreen(navController)
         }
         composable(Cart.route) {
             Cart()
@@ -40,9 +65,12 @@ fun NavigationHost(navController: NavHostController) {
         composable(Account.route) {
             Account()
         }
-//        composable(ProductDetails.route) {
-//            ProductDetailScreen()
-//        }
+        composable(ProductDetails.route) {
+            ProductDetailScreen(navController)
+        }
+        composable("productdetails") {
+            ProductDetailScreen(navController)
+        }
 //        composable(FiltersPopUp.route) {
 //            FilterScreen()
 //        }
