@@ -58,7 +58,7 @@ fun Shop(navController: NavHostController) {
                             .padding(start = 120.dp)
                             .padding(top = 10.dp)
                     )
-                    Spacer(modifier = Modifier.height(30.dp))
+                    Spacer(modifier = Modifier.height(6.dp))
                 }
             }
         },
@@ -72,13 +72,15 @@ fun Shop(navController: NavHostController) {
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(vertical = 8.dp),
+                            .padding(vertical = 8.dp)
+                            .background(color = Color(0xFFFFFFFF)),
                         contentAlignment = Alignment.Center
                     ) {
                         Text(
                             text = "Dhaka, Banassre",
                             fontSize = 20.sp,
-                            fontWeight = FontWeight.Bold
+                            fontWeight = FontWeight.Bold,
+                            fontFamily = gilroyFontFamily
                         )
                     }
                 }
@@ -192,7 +194,7 @@ fun ProductCard(product: Fruit) {
         Column(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.SpaceBetween,
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             // Product Image within each shopping card
             Image(
@@ -219,7 +221,8 @@ fun ProductCard(product: Fruit) {
                     text = product.title,
                     style = MaterialTheme.typography.bodyLarge.copy(
                         fontWeight = FontWeight.Bold,
-                        fontSize = 20.sp
+                        fontSize = 20.sp,
+                        fontFamily = gilroyFontFamily
                     ),
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
@@ -228,7 +231,8 @@ fun ProductCard(product: Fruit) {
                     text = product.content,
                     style = MaterialTheme.typography.bodyLarge.copy(
                         fontSize = 16.sp,
-                        color = Color(124, 124, 124)
+                        color = Color(124, 124, 124),
+                        fontFamily = gilroyFontFamily
                     ),
                     modifier = Modifier.padding(top = 4.dp)
                 )
@@ -244,7 +248,8 @@ fun ProductCard(product: Fruit) {
                     text = "\$${product.price}",
                     style = MaterialTheme.typography.bodyLarge.copy(
                         fontWeight = FontWeight.Bold,
-                        fontSize = 18.sp
+                        fontSize = 18.sp,
+                        fontFamily = gilroyFontFamily
                     )
                 )
                 Button(

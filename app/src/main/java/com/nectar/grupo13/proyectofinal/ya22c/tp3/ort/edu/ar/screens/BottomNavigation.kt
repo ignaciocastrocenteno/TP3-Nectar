@@ -1,9 +1,10 @@
-package com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar
+package com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.screens
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavHostController
+import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.data.Items
 
 @Composable
 fun BottomNavigation(navController: NavHostController) {

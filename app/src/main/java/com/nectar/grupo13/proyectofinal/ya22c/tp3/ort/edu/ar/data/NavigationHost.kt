@@ -1,10 +1,10 @@
-package com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar
+package com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.data
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.NavHostController
-import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.Items.*
+import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.data.Items.*
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.screens.*
 
 @Composable

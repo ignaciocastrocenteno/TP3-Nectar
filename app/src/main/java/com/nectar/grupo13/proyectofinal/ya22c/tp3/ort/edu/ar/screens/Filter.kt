@@ -1,4 +1,4 @@
-package com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar
+package com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -14,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.ui.res.colorResource
+import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

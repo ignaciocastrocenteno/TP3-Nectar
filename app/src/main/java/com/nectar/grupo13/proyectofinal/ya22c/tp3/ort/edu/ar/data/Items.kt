@@ -1,6 +1,6 @@
-package com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar
+package com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.data
 
-import okhttp3.Route
+import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.R
 
 sealed class Items(
     val icon: Int,

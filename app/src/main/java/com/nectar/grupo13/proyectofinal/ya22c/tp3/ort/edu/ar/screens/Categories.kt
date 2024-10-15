@@ -1,4 +1,4 @@
-package com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar
+package com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.screens
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize

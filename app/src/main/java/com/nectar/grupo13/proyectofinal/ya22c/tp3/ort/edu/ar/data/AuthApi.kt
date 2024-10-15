@@ -1,4 +1,4 @@
-package com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar
+package com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.data
 
 import retrofit2.Call
 import retrofit2.http.Body

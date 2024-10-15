@@ -19,7 +19,12 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavHostController
-import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.screens.Shop
+import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.data.NavigationHost
+import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.screens.BottomNavigation
+import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.screens.Onboarding
+import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.screens.SelectLocationScreen
+import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.screens.SignInScreen
+import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.screens.SignUpScreen
 import kotlinx.coroutines.delay
 
 
@@ -115,7 +120,6 @@ fun AppNavigation() {
                 modifier = Modifier.fillMaxSize(),
                 color = Color(0xFFFFFFFF)
             ) {
-//                Shop(navController)
                   MainScreen()
             }
         }
@@ -133,7 +137,7 @@ fun SplashScreen(navController: NavHostController) {
     }
 
     // Splash Screen UI
-    SplashScreen()
+    com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.screens.SplashScreen()
 }
 
 @Composable

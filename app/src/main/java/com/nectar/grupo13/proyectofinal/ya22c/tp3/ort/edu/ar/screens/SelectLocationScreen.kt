@@ -1,4 +1,4 @@
-package com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar
+package com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.screens
 
 import android.widget.Toast
 import androidx.compose.foundation.Image
@@ -25,6 +25,7 @@ import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Text
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
+import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.R
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.ui.theme.gilroyFontFamily
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -173,7 +174,7 @@ fun SelectLocationScreen(navController: NavHostController) {
                             readOnly = true,
                             enabled = true,
                             singleLine = true,
-                            trailingIcon = {CustomTrailingIcon(citiesExpanded)},
+                            trailingIcon = { CustomTrailingIcon(citiesExpanded) },
                             modifier = Modifier
                                 .width(370.dp)
                                 .height(65.dp)
@@ -243,7 +244,7 @@ fun SelectLocationScreen(navController: NavHostController) {
                             readOnly = true,
                             enabled = true,
                             singleLine = true,
-                            trailingIcon = {CustomTrailingIcon(cityAreasExpanded)},
+                            trailingIcon = { CustomTrailingIcon(cityAreasExpanded) },
                             modifier = Modifier
                                 .width(370.dp)
                                 .height(65.dp)

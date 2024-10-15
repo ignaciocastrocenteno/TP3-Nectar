@@ -1,5 +1,7 @@
-package com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar
+package com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.screens
 
+import android.content.Context
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -11,9 +13,8 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.AnnotatedString
-import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -22,30 +23,35 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Text
 import androidx.navigation.NavController
+import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.R
+import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.data.RetrofitInstance
+import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.data.LoginRequest
+import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.data.LoginResponse
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.ui.theme.gilroyFontFamily
-
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 @Composable
-fun SignUpScreen(navController: NavController) {
-    var username by rememberSaveable { mutableStateOf("") }
+fun SignInScreen(navController: NavController) {
     var email by rememberSaveable { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
     var passwordVisible by rememberSaveable { mutableStateOf(false) }
 
+    // Obtain the context for Toast
+    val context = LocalContext.current
+
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp), // Padding around the screen
+            .padding(16.dp) // Padding around the screen
+            .background(color = Color.White),
         contentAlignment = Alignment.Center
     ) {
         Box(
             modifier = Modifier
                 .fillMaxSize() // Ensure the Box takes the full screen
-                .background(color = Color(0xFFFFFFFF)),
         ) {
             // Top Orange Carrot Image
             Image(
@@ -58,83 +64,33 @@ fun SignUpScreen(navController: NavController) {
         }
         Column(
             horizontalAlignment = Alignment.Start,
-            verticalArrangement = Arrangement.spacedBy(16.dp)
+            verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
             Spacer(modifier = Modifier.height(130.dp))
 
-            // "Sign Up" Title
             Text(
-                text = "Sign Up",
+                text = "Sign In",
                 style = TextStyle(
                     fontFamily = gilroyFontFamily,
                     fontWeight = FontWeight.Bold,
                     fontSize = 24.sp
                 ),
                 textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .offset(x = 8.dp)
+                modifier = Modifier.offset(x = 8.dp)
             )
 
-            // Subtitle Text
             Text(
-                text = "Enter your credentials to continue",
+                text = "Enter your email and password",
                 style = TextStyle(
                     fontFamily = gilroyFontFamily,
                     fontWeight = FontWeight.Normal,
                     fontSize = 14.sp,
                     color = Color.Gray
                 ),
-                modifier = Modifier
-                    .offset(x = 8.dp)
+                modifier = Modifier.offset(x = 8.dp)
             )
 
             Spacer(modifier = Modifier.height(10.dp))
-
-
-            // Username Input Field
-            TextField(
-                value = username,
-                onValueChange = { username = it },
-                label = {
-                    Text("Username",
-                        color = Color.Gray,
-                        style = TextStyle(
-                            fontSize = 14.sp,
-                            fontFamily = gilroyFontFamily,
-                            fontWeight = FontWeight.W500
-                        )
-                    )
-                },
-                modifier = Modifier.fillMaxWidth(),
-                textStyle = TextStyle(
-                    fontSize = 18.sp,
-                    fontFamily = gilroyFontFamily,
-                    fontWeight = FontWeight.W400,
-                    color = Color.Black
-                ),
-                readOnly = false,
-                enabled = true,
-                singleLine = true,
-                keyboardOptions = KeyboardOptions.Default.copy(
-                    keyboardType = KeyboardType.Password
-                ),
-                colors = TextFieldDefaults.colors(
-                    unfocusedContainerColor = Color.White,
-                    focusedContainerColor = Color.White,
-                    focusedTextColor = Color.Black,
-                    unfocusedTextColor = Color.Gray,
-                    errorTextColor = Color.Red,
-                    cursorColor = Color.Gray,
-                    focusedIndicatorColor = Color.Gray,
-                    unfocusedIndicatorColor = Color.Gray,
-                    errorIndicatorColor = Color.Red,
-                    focusedTrailingIconColor = Color.Gray,
-                    unfocusedTrailingIconColor = Color.Gray,
-                    errorTrailingIconColor = Color.Red
-                )
-            )
-
-            Spacer(modifier = Modifier.height(2.dp))
 
             // Email Input Field
             TextField(
@@ -171,8 +127,8 @@ fun SignUpScreen(navController: NavController) {
                     unfocusedTextColor = Color.Gray,
                     errorTextColor = Color.Red,
                     cursorColor = Color.Gray,
-                    focusedIndicatorColor = Color.Gray,
-                    unfocusedIndicatorColor = Color.Gray,
+                    focusedIndicatorColor = Color.LightGray,
+                    unfocusedIndicatorColor = Color.LightGray,
                     errorIndicatorColor = Color.Red,
                     focusedTrailingIconColor = Color.Gray,
                     unfocusedTrailingIconColor = Color.Gray,
@@ -180,7 +136,7 @@ fun SignUpScreen(navController: NavController) {
                 )
             )
 
-            Spacer(modifier = Modifier.height(2.dp))
+            Spacer(modifier = Modifier.height(10.dp))
 
             // Password Input Field
             TextField(
@@ -196,18 +152,11 @@ fun SignUpScreen(navController: NavController) {
                         )
                     )
                 },
-                modifier = Modifier.fillMaxWidth(),
                 textStyle = TextStyle(
                     fontSize = 18.sp,
                     fontFamily = gilroyFontFamily,
                     fontWeight = FontWeight.W400,
                     color = Color.Black
-                ),
-                readOnly = false,
-                enabled = true,
-                singleLine = true,
-                keyboardOptions = KeyboardOptions.Default.copy(
-                    keyboardType = KeyboardType.Password
                 ),
                 visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
                 trailingIcon = {
@@ -220,6 +169,8 @@ fun SignUpScreen(navController: NavController) {
                         )
                     }
                 },
+                modifier = Modifier.fillMaxWidth(),
+                keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Password),
                 colors = TextFieldDefaults.colors(
                     unfocusedContainerColor = Color.White,
                     focusedContainerColor = Color.White,
@@ -227,8 +178,8 @@ fun SignUpScreen(navController: NavController) {
                     unfocusedTextColor = Color.Gray,
                     errorTextColor = Color.Red,
                     cursorColor = Color.Gray,
-                    focusedIndicatorColor = Color.Gray,
-                    unfocusedIndicatorColor = Color.Gray,
+                    focusedIndicatorColor = Color.LightGray,
+                    unfocusedIndicatorColor = Color.LightGray,
                     errorIndicatorColor = Color.Red,
                     focusedTrailingIconColor = Color.Gray,
                     unfocusedTrailingIconColor = Color.Gray,
@@ -236,104 +187,104 @@ fun SignUpScreen(navController: NavController) {
                 )
             )
 
-            // TOS & PP text
-            Box {
+            // "Forgot Password?" TextButton
+            TextButton(
+                onClick = { /* Handle button click */ }, // Add an onClick handler
+                modifier = Modifier
+                    .align(Alignment.End)
+                    .padding(top = 1.dp)
+                    .offset(x = 5.dp, y = (-13).dp)
+            ) {
                 Text(
+                    text = "Forgot Password?",
                     style = TextStyle(
-                        letterSpacing = 0.5.sp,
                         fontFamily = gilroyFontFamily,
-//                        fontWeight = FontWeight.W400
-                    ),
-                    text = AnnotatedString(
-                        text = "By continuing you agree to our ",
-                        spanStyle = SpanStyle(color = Color.Gray)
-                    ) +
-                    AnnotatedString(
-                         text = "Terms of Service\n",
-                         spanStyle = SpanStyle(color = Color(0xFF53B175))
-                    ),
-                    modifier = Modifier
-                        .align(Alignment.Center)
-                        .padding(top = 4.dp)
-                        .padding(start = 8.dp)
-                )
-                Text(
-                    style = TextStyle(
-                        letterSpacing = 0.5.sp
-                    ),
-                    text = AnnotatedString(
-                        text = "and ",
-                        spanStyle = SpanStyle(color = Color.Gray)
-                    ) +
-                    AnnotatedString(
-                        text = "Privacy Policy.",
-                        spanStyle = SpanStyle(color = Color(0xFF53B175))
-                    ),
-                    modifier = Modifier
-//                        .align(Alignment.Start)
-                        .padding(top = 25.dp)
-                        .padding(start = 8.dp)
+                        fontSize = 14.sp,
+                        fontWeight = FontWeight.W400,
+                        color = Color(0xFF000000)
+                    )
                 )
             }
 
-            Spacer(modifier = Modifier.height(24.dp))
+            Spacer(Modifier.height(3.dp))
 
-            // Sign Up Button
+            // Log In Button
             Button(
-                onClick = { navController.navigate("selectlocation") },
+                onClick = { performLogin(email, password, context, navController) },
                 modifier = Modifier
                     .width(370.dp)
                     .height(65.dp)
-                    .offset(y = (-25).dp),
-                contentPadding = PaddingValues(8.dp), // Internal padding inside the button
-                shape = RoundedCornerShape(18.dp), // Smaller corner radius for less rounded button
+                    .offset(y = (-20).dp),
+                shape = RoundedCornerShape(18.dp),
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFF53B175), // Set your custom background color (Purple in this case)
-                    contentColor = Color(0xFFFFFFFF) // Set the text color (white)
+                    containerColor = Color(0xFF53B175),
+                    contentColor = Color.White
                 )
             ) {
-                Text(
-                    text = "Sign Up",
-                    color = Color(0xFFFFFFFF),
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.W400,
-                    fontFamily = gilroyFontFamily,
-                    textAlign = TextAlign.Center,
-                )
+                Text("Log In", fontSize = 18.sp, fontWeight = FontWeight.W400)
             }
 
-            Spacer(modifier = Modifier.height(1.dp))
-
-            // "Already have an account? Sign Up" Text
+            // "Don't have an account? Signup" Text
             Row(
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically, // Ensure all texts align vertically
                 modifier = Modifier
                     .fillMaxWidth()
-                    .offset(y = (-50).dp)
+                    .padding(end = 20.dp)
+                    .offset(y = (-30).dp)
             ) {
                 Text(
-                    text = "Already have an account?",
+                    text = "Don’t have an account?",
                     style = TextStyle(
                         fontFamily = gilroyFontFamily,
                         fontSize = 14.sp,
                         fontWeight = FontWeight.W500,
                         color = Color(0xFF000000)
-                    )
+                    ),
+                    modifier = Modifier
+                        .offset(x = 7.dp)
                 )
-                TextButton(onClick = { navController.navigate("signin") }) {
+                TextButton(onClick = { navController.navigate("signup") }) {
                     Text(
-                        text = "Signin",
+                        text = "Signup",
                         style = TextStyle(
                             fontFamily = gilroyFontFamily,
                             fontSize = 14.sp,
-                            fontWeight = FontWeight.W500,
+                            fontWeight = FontWeight.W400,
                             color = Color(0xFF53B175)
-                        ),
-                        modifier = Modifier.offset(x = (-8).dp, y = (-0.2).dp)
+                        )
                     )
                 }
             }
         }
     }
 }
+
+private fun performLogin(username: String, password: String, context: Context, navController: NavController) {
+    val loginRequest = LoginRequest(username, password)
+
+    // Ensure RetrofitInstance.api is properly initialized
+    val call = RetrofitInstance.api?.login(loginRequest)
+        ?: run {
+            Toast.makeText(context, "API not initialized", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+    call.enqueue(object : Callback<LoginResponse> {
+        override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+            if (response.isSuccessful && response.body() != null) {
+                val token = response.body()?.token
+                Toast.makeText(context, "Login Successful! Token: $token", Toast.LENGTH_LONG).show()
+                navController.navigate("shop")
+            } else {
+                val errorMessage = response.errorBody()?.string() ?: "Unknown error"
+                Toast.makeText(context, "Login Failed: $errorMessage", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+            Toast.makeText(context, "Error: ${t.localizedMessage}", Toast.LENGTH_SHORT).show()
+        }
+    })
+}
+
