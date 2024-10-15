@@ -23,13 +23,14 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.ui.theme.gilroyFontFamily
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 @Composable
-fun SignInScreen() {
+fun SignInScreen(navController: NavController) {
     var email by rememberSaveable { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
     var passwordVisible by rememberSaveable { mutableStateOf(false) }
@@ -205,7 +206,7 @@ fun SignInScreen() {
 
             // Log In Button
             Button(
-                onClick = { performLogin(email, password, context) },
+                onClick = { performLogin(email, password, context, navController) },
                 modifier = Modifier
                     .width(370.dp)
                     .height(65.dp)
@@ -239,7 +240,7 @@ fun SignInScreen() {
                     modifier = Modifier
                         .offset(x = 7.dp)
                 )
-                TextButton(onClick = { /* Navigate to Signup */ }) {
+                TextButton(onClick = { navController.navigate("signup") }) {
                     Text(
                         text = "Signup",
                         style = TextStyle(
@@ -255,7 +256,7 @@ fun SignInScreen() {
     }
 }
 
-private fun performLogin(username: String, password: String, context: Context) {
+private fun performLogin(username: String, password: String, context: Context, navController: NavController) {
     val loginRequest = LoginRequest(username, password)
 
     // Ensure RetrofitInstance.api is properly initialized
@@ -270,6 +271,7 @@ private fun performLogin(username: String, password: String, context: Context) {
             if (response.isSuccessful && response.body() != null) {
                 val token = response.body()?.token
                 Toast.makeText(context, "Login Successful! Token: $token", Toast.LENGTH_LONG).show()
+                navController.navigate("shop")
             } else {
                 val errorMessage = response.errorBody()?.string() ?: "Unknown error"
                 Toast.makeText(context, "Login Failed: $errorMessage", Toast.LENGTH_SHORT).show()

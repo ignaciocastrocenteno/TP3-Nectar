@@ -23,10 +23,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.ui.theme.gilroyFontFamily
 
 @Composable
-fun Onboarding() {
+fun Onboarding(navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -80,8 +81,12 @@ fun Onboarding() {
                 .offset(y = (700).dp)
         )
         Spacer(modifier = Modifier.height(32.dp))
+
+        // Get Started
         Button(
-            onClick = { /* Handle "Get Started" click */ },
+            onClick = {
+                navController.navigate("signin")  // Navigate to the SignIn screen
+            },
             modifier = Modifier
                 .width(350.dp)
                 .height(70.dp)

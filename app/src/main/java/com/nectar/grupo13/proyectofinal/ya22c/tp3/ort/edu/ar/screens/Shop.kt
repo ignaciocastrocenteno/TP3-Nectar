@@ -25,33 +25,40 @@ import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.R
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.data.dataShop.Fruit
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.data.dataShop.FruitListItems
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
-
+import androidx.navigation.NavHostController
+import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.ui.theme.gilroyFontFamily
 
 @Composable
-fun Shop() {
+fun Shop(navController: NavHostController) {
     Scaffold(
         topBar = {
             NavigationBar(
-                containerColor = Color(252, 252, 252)
+                containerColor = Color(0xFFFFFFFF)
             ) {
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 16.dp),
-                    verticalAlignment = Alignment.CenterVertically
+                        .padding(horizontal = 12.dp, vertical = 34.dp)
+                        .background(color = Color(0xFFFFFFFF)),
+                        verticalAlignment = Alignment.CenterVertically
                 ) {
                     IconButton(onClick = { /* Acción del menú */ }) {
                         Icon(Icons.Default.Menu, contentDescription = "Menú")
                     }
-                    Spacer(modifier = Modifier.weight(0.7f))
+                    Spacer(modifier = Modifier.height(45.dp))
                     Text(
                         text = "Shop",
-                        fontSize = 28.sp,
-                        fontWeight = FontWeight.Bold,
-                        modifier = Modifier.align(Alignment.CenterVertically)
+                        fontSize = 22.sp,
+                        fontWeight = FontWeight.W400,
+                        fontFamily = gilroyFontFamily,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier
+                            .padding(start = 120.dp)
+                            .padding(top = 10.dp)
                     )
-                    Spacer(modifier = Modifier.weight(1f))
+                    Spacer(modifier = Modifier.height(30.dp))
                 }
             }
         },
@@ -84,11 +91,12 @@ fun Shop() {
                 item {
                     Spacer(modifier = Modifier.height(8.dp))
                 }
+                // Exclusive Offer Section
                 item {
                     Row(
                         modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(horizontal = 8.dp),
+                            .fillMaxWidth(),
+//                            .padding(horizontal = 8.dp),
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
@@ -118,6 +126,7 @@ fun Shop() {
                 item {
                     Spacer(modifier = Modifier.height(8.dp))
                 }
+                // Best Selling Section
                 item {
                     Row(
                         modifier = Modifier
@@ -158,7 +167,7 @@ fun Shop() {
 @Composable
 fun FreshVegetableBanner() {
     Image(
-        painter = painterResource(id = R.drawable.banner),
+        painter = painterResource(id = R.drawable.shop_banner_advertisment),
         contentDescription = "Fresh Vegetables banner",
         contentScale = ContentScale.Crop,
         modifier = Modifier.height(130.dp)
@@ -185,12 +194,15 @@ fun ProductCard(product: Fruit) {
             verticalArrangement = Arrangement.SpaceBetween,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            // Product Image within each shopping card
             Image(
                 painter = painterResource(id = imageResId),
                 contentDescription = product.title,
                 modifier = Modifier
-                    .width(150.dp)
-                    .height(120.dp)
+//                    .width(150.dp)
+//                    .height(120.dp)
+                    .width(100.dp)
+                    .height(75.dp)
                     .padding(top = 30.dp)
                     .clickable {
                         // Acción al hacer clic en la imagen, como por ejemplo

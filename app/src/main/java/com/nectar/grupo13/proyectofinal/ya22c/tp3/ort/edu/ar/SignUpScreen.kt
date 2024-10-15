@@ -25,11 +25,12 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
+import androidx.navigation.NavController
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.ui.theme.gilroyFontFamily
 
 
 @Composable
-fun SignUpScreen() {
+fun SignUpScreen(navController: NavController) {
     var username by rememberSaveable { mutableStateOf("") }
     var email by rememberSaveable { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
@@ -279,7 +280,7 @@ fun SignUpScreen() {
 
             // Sign Up Button
             Button(
-                onClick = { /* Handle "Get Started" click */ },
+                onClick = { navController.navigate("selectlocation") },
                 modifier = Modifier
                     .width(370.dp)
                     .height(65.dp)
@@ -320,9 +321,9 @@ fun SignUpScreen() {
                         color = Color(0xFF000000)
                     )
                 )
-                TextButton(onClick = { /* Navigate to Signup */ }) {
+                TextButton(onClick = { navController.navigate("signin") }) {
                     Text(
-                        text = "Signup",
+                        text = "Signin",
                         style = TextStyle(
                             fontFamily = gilroyFontFamily,
                             fontSize = 14.sp,

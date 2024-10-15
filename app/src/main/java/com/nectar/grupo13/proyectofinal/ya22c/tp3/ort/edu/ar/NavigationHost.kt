@@ -9,21 +9,55 @@ import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.screens.*
 
 @Composable
 fun NavigationHost(navController: NavHostController) {
-    NavHost(navController = navController, startDestination = Pantalla1.ruta) {
-        composable(Pantalla1.ruta) {
-            Shop()
+    NavHost(navController = navController, startDestination = HomeScreen.route) {
+//        composable(SplashScreen.route) {
+//            SplashScreen(navController)
+//        }
+//        composable(Onboarding.route) {
+//            Explore()
+//        }
+//        composable(SignIn.route) {
+//            Cart()
+//        }
+//        composable(SignUp.route) {
+//            Favourite()
+//        }
+//        composable(SelectLocation.route) {
+//            Account()
+//        }
+        composable(HomeScreen.route) {
+            Shop(navController)
         }
-        composable(Pantalla2.ruta) {
+        composable(Explore.route) {
             Explore()
         }
-        composable(Pantalla3.ruta) {
+        composable(Cart.route) {
             Cart()
         }
-        composable(Pantalla4.ruta) {
+        composable(Favourite.route) {
             Favourite()
         }
-        composable(Pantalla5.ruta) {
+        composable(Account.route) {
             Account()
         }
+//        composable(ProductDetails.route) {
+//            ProductDetailScreen()
+//        }
+//        composable(FiltersPopUp.route) {
+//            FilterScreen()
+//        }
+//        composable(Checkout.route) {
+//            CheckoutModal()
+//            // [TODO] - Falta hacer el faded de color gris en la Activity 'Cart.kt'
+//        }
+//        composable(Categories.route) {
+//            CategoriesScreen()
+//        }
+//        composable(Search.route) {
+//            // [TODO] - Falta hacer la activity 'Search.kt'
+//        }
+//        composable(OrderedAccepted.route) {
+//            // [TODO] - Falta hacer la activity 'OrderedAccepted.kt'
+//        }
     }
 }

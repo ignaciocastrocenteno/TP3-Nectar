@@ -89,6 +89,15 @@ dependencies {
     implementation(libs.androidx.navigation.runtime.ktx)
     implementation(libs.androidx.navigation.compose)
 
+    // Jetpack Compose Navigation
+    implementation(libs.androidx.navigation.compose.v273)
+
+    implementation(libs.androidx.fragment.ktx)
+
+    implementation(libs.ui)
+    implementation(libs.androidx.material)
+    implementation(libs.ui.tooling.preview)
+
     // J-Unit Testing Framework
     testImplementation(libs.junit)
 

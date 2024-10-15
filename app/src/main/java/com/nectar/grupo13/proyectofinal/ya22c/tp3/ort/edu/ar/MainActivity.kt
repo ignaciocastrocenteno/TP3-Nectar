@@ -1,21 +1,26 @@
 package com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
-import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.ProductDetailScreen
-import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.ui.theme.NectarTheme
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.compose.composable
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Surface
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.navigation.NavHostController
+import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.screens.Shop
+import kotlinx.coroutines.delay
 
 
 class MainActivity : ComponentActivity() {
@@ -23,13 +28,11 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
+// GLOBAL APP NAVIGATION SYSTEM
+            AppNavigation()
+
 //// SPLASH SCREEN
-//                Surface(
-//                    modifier = Modifier.fillMaxSize(),
-//                    color = Color(0xFF53B175) // Green Background - Splash Screen
-//                ) {
-//                    SplashScreen()
-//                }
+//        SplashScreen()
 
 //// ONBOARDING SCREEN
 //            Box(
@@ -54,13 +57,21 @@ class MainActivity : ComponentActivity() {
 
 //// SELECT LOCATION SCREEN
 //                SelectLocationScreen()
-                ProductDetailScreen()
-            /*
-            Text merge
-             */
-            }
+        }
         }
     }
+
+@Composable
+fun MainScreen(){
+    val navController = rememberNavController()
+    Scaffold(
+        bottomBar = { BottomNavigation(navController) }
+    ) { innerPadding ->
+        Column(modifier = Modifier.padding(innerPadding)) {
+            NavigationHost(navController)
+        }
+    }
+}
 
 // Converting PX to DP for easier usage of units
 @Composable
@@ -69,4 +80,63 @@ fun pixelsToDp(pixelsToConvert: Int): Dp {
     val valueConverted = with(screenDensity) { pixelsToConvert.toDp() }
 
     return valueConverted
+}
+
+@Composable
+fun AppNavigation() {
+    val navController = rememberNavController()
+
+    NavHost(
+        navController = navController,
+        startDestination = "splash"
+    ) {
+        composable("splash") {
+            Surface(
+                modifier = Modifier.fillMaxSize(),
+                color = Color(0xFF53B175) // Green Background - Splash Screen
+            ) {
+                SplashScreen(navController)
+            }
+        }
+        composable("onboarding") {
+            OnboardingScreen(navController)
+        }
+        composable("signin") {
+            SignInScreen(navController)
+        }
+        composable("signup") {
+            SignUpScreen(navController)
+        }
+        composable("selectlocation") {
+            SelectLocationScreen(navController)
+        }
+        composable("shop") {
+            Surface(
+                modifier = Modifier.fillMaxSize(),
+                color = Color(0xFFFFFFFF)
+            ) {
+//                Shop(navController)
+                  MainScreen()
+            }
+        }
+    }
+}
+
+@Composable
+fun SplashScreen(navController: NavHostController) {
+    // Using LaunchedEffect to start a coroutine and handle the delay
+    LaunchedEffect(Unit) {
+        delay(3000)  // 3000ms = 3 seconds
+        navController.navigate("onboarding") {
+            popUpTo("splash") { inclusive = true }  // Remove Splash from the back stack
+        }
+    }
+
+    // Splash Screen UI
+    SplashScreen()
+}
+
+@Composable
+fun OnboardingScreen(navController: NavHostController) {
+    Onboarding(navController)
 }

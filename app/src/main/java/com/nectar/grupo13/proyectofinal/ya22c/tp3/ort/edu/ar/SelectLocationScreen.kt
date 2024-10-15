@@ -24,11 +24,12 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Text
 import androidx.compose.ui.platform.LocalContext
+import androidx.navigation.NavHostController
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.ui.theme.gilroyFontFamily
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SelectLocationScreen() {
+fun SelectLocationScreen(navController: NavHostController) {
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
@@ -286,7 +287,7 @@ fun SelectLocationScreen() {
 
                 // Submit button
                 Button(
-                    onClick = { /* Handle "Get Started" click */ },
+                    onClick = { navController.navigate("shop") },
                     modifier = Modifier
                         .width(370.dp)
                         .height(65.dp)

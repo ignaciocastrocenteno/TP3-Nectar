@@ -6,15 +6,15 @@ import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavHostController
 
 @Composable
-fun NavegacionInferior(navController: NavHostController) {
+fun BottomNavigation(navController: NavHostController) {
     val items = listOf(
-        Items.Pantalla1,
-        Items.Pantalla2,
-        Items.Pantalla3,
-        Items.Pantalla4,
-        Items.Pantalla5
+        Items.HomeScreen,
+        Items.Explore,
+        Items.Cart,
+        Items.Favourite,
+        Items.Account
     )
-    var selectedItem by remember { mutableStateOf<Items>(Items.Pantalla1) }
+    var selectedItem by remember { mutableStateOf<Items>(Items.HomeScreen) }
 
     NavigationBar(containerColor = Color(252, 252, 252)) {
         items.forEach { item ->
@@ -29,7 +29,7 @@ fun NavegacionInferior(navController: NavHostController) {
                 selected = item == selectedItem,
                 onClick = {
                     selectedItem = item
-                    navController.navigate(item.ruta) {
+                    navController.navigate(item.route) {
                         popUpTo(navController.graph.startDestinationId) {
                             saveState = true
                         }

@@ -2,10 +2,12 @@
 agp = "8.5.2"
 accompanistCoilVersion = "0.28.0"
 androidxMaterial3 = "<version>"
+androidxNavigationCompose = "2.7.3"
 coilCompose = "3.0.0-rc01"
 coilComposeVersion = "2.4.0"
 converterGsonVersion = "2.9.0"
 coreKtxVersion = "1.13.1"
+fragmentKtxVersion = "1.8.4"
 kotlin = "1.9.0"
 coreKtx = "1.13.1"
 junit = "4.13.2"
@@ -16,13 +18,19 @@ activityCompose = "1.9.2"
 composeBom = "2024.09.03"
 constraintlayoutComposeVersion = "1.0.1"
 material3Version = "1.3.0"
+materialVersion = "1.7.3"
 retrofitVersion = "2.9.0"
 navigationRuntimeKtx = "2.8.2"
 navigationCompose = "2.8.2"
+uiToolingPreviewVersion = "1.7.3"
+uiVersion = "1.7.3"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-fragment-ktx = { module = "androidx.fragment:fragment-ktx", version.ref = "fragmentKtxVersion" }
+androidx-material = { module = "androidx.compose.material:material", version.ref = "materialVersion" }
 androidx-material3-vversion = { module = "androidx.compose.material3:material3", version.ref = "androidxMaterial3" }
+androidx-navigation-compose-v273 = { module = "androidx.navigation:navigation-compose", version.ref = "androidxNavigationCompose" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilComposeVersion" }
 coil-network-okhttp = { module = "io.coil-kt.coil3:coil-network-okhttp", version.ref = "coilCompose" }
 coil3-coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coilCompose" }
@@ -46,6 +54,8 @@ material3 = { module = "androidx.compose.material3:material3", version.ref = "ma
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofitVersion" }
 androidx-navigation-runtime-ktx = { group = "androidx.navigation", name = "navigation-runtime-ktx", version.ref = "navigationRuntimeKtx" }
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
+ui = { module = "androidx.compose.ui:ui", version.ref = "uiVersion" }
+ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "uiToolingPreviewVersion" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
