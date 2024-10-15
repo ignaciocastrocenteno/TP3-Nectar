@@ -15,6 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.ProductDetailScreen
+import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.screens.Shop
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.ui.theme.NectarTheme
 
 
@@ -54,7 +55,7 @@ class MainActivity : ComponentActivity() {
 
 //// SELECT LOCATION SCREEN
 //                SelectLocationScreen()
-                ProductDetailScreen()
+            CategoriesScreen()
             /*
             Text merge
              */
