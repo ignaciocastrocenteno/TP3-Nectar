@@ -16,6 +16,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.ui.theme.gilroyFontFamily
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -25,7 +26,8 @@ fun MyTopBar(text: String) {
             modifier = Modifier
                 .fillMaxWidth(),
             fontSize = 28.sp,
-            fontWeight = FontWeight.Bold,
+            fontWeight = FontWeight.W700,
+            fontFamily = gilroyFontFamily,
             textAlign = TextAlign.Center,
             style = MaterialTheme.typography.headlineMedium) },
             modifier = Modifier.padding(end = 40.dp),

@@ -21,6 +21,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.ui.theme.gilroyFontFamily
 
 @Composable
     fun ProductDetailScreen() {
@@ -51,7 +52,7 @@ import androidx.compose.ui.unit.dp
 
                 Spacer(modifier = Modifier.height(8.dp))
 
-                NutritionsSection()
+                NutritionSection()
 
                 Spacer(modifier = Modifier.height(8.dp))
 
@@ -74,78 +75,7 @@ fun PreviewProductDetailScreen() {
 }
 
 @Composable
-fun NutritionsSection() {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Text(
-            text = "Nutritions",
-            style = MaterialTheme.typography.headlineSmall
-
-        )
-        Spacer(modifier = Modifier.weight(1f))
-        Card(
-            colors = CardDefaults.cardColors(
-                containerColor = MaterialTheme.colorScheme.surfaceVariant,
-            ),
-            modifier = Modifier
-                .size(width = 50.dp, height = 30.dp)
-        ) {
-            Text(
-                text = "100gr",
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(2.dp),
-                textAlign = TextAlign.Center
-
-            )
-        }
-        Icon(
-            imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
-            contentDescription = "Ver más"
-        )
-    }
-}
-
-@Composable
-fun ProductDetailsSection() {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Text(
-            text = "Product Details",
-            style = MaterialTheme.typography.headlineSmall,
-
-            )
-        Spacer(modifier = Modifier.weight(1f))
-        Icon(
-            imageVector = Icons.Default.KeyboardArrowDown,
-            contentDescription = "Ver más"
-        )
-    }
-    Row(
-        modifier = Modifier
-            .fillMaxWidth(),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Text(
-            text = "Apples are nutritious. Apples may be good for weight loss. Apples may be good for your heart. As part of a healthful and varied diet.",
-            style = MaterialTheme.typography.bodyLarge,
-            textAlign = TextAlign.Start,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(10.dp)
-        )
-    }
-}
-@Composable
-fun  ImageSection() {
+fun ImageSection() {
     Row {
         Box(
             modifier = Modifier
@@ -184,8 +114,7 @@ fun  ImageSection() {
     }
 }
 @Composable
-fun  MainSection() {
-
+fun MainSection() {
     Row (
         modifier = Modifier
     )
@@ -196,14 +125,16 @@ fun  MainSection() {
             Text(
                 text = "Naturel Red Apple",
                 style = MaterialTheme.typography.headlineMedium,
-                fontWeight = FontWeight.Bold,
+                fontWeight = FontWeight.W700,
+                fontFamily = gilroyFontFamily,
                 modifier = Modifier.fillMaxWidth(),
                 textAlign = TextAlign.Start
             )
             Text(
                 text = "1kg, Price",
                 style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                fontFamily = gilroyFontFamily,
             )
 
         }
@@ -217,7 +148,7 @@ fun  MainSection() {
             )
         }
     }
-    Spacer()
+    Spacer(modifier = Modifier.height(8.dp))
 
     Row(
         verticalAlignment = Alignment.CenterVertically
@@ -231,7 +162,8 @@ fun  MainSection() {
         Text(
             text = "1",
             style = MaterialTheme.typography.bodyLarge,
-            fontWeight = FontWeight.Bold,
+            fontWeight = FontWeight.W700,
+            fontFamily = gilroyFontFamily,
             modifier = Modifier.padding(horizontal = 16.dp)
         )
         IconButton(onClick = { /* lógica para aumentar */ }) {
@@ -244,7 +176,8 @@ fun  MainSection() {
         Text(
             text = "$4.99",
             style = MaterialTheme.typography.headlineSmall,
-            fontWeight = FontWeight.Bold,
+            fontWeight = FontWeight.W800,
+            fontFamily = gilroyFontFamily,
             color = Color.Black,
             modifier = Modifier.fillMaxWidth(),
             textAlign = TextAlign.End
@@ -253,8 +186,75 @@ fun  MainSection() {
 }
 
 @Composable
-fun Spacer(){
-    Spacer(modifier = Modifier.height(8.dp))
+fun ProductDetailsSection() {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(
+            text = "Product Details",
+            style = MaterialTheme.typography.headlineSmall,
+
+            )
+        Spacer(modifier = Modifier.weight(1f))
+        Icon(
+            imageVector = Icons.Default.KeyboardArrowDown,
+            contentDescription = "Ver más"
+        )
+    }
+    Row(
+        modifier = Modifier
+            .fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(
+            text = "Apples are nutritious. Apples may be good for weight loss. Apples may be good for your heart. As part of a healthful and varied diet.",
+            style = MaterialTheme.typography.bodyLarge,
+            textAlign = TextAlign.Start,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(10.dp)
+        )
+    }
+}
+
+@Composable
+fun NutritionSection() {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(
+            text = "Nutritions",
+            style = MaterialTheme.typography.headlineSmall
+
+        )
+        Spacer(modifier = Modifier.weight(1f))
+        Card(
+            colors = CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.surfaceVariant,
+            ),
+            modifier = Modifier
+                .size(width = 50.dp, height = 30.dp)
+        ) {
+            Text(
+                text = "100gr",
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(2.dp),
+                textAlign = TextAlign.Center
+
+            )
+        }
+        Icon(
+            imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+            contentDescription = "Ver más"
+        )
+    }
 }
 
 @Composable

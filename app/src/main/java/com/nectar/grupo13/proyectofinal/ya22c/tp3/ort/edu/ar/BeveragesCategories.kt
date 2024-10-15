@@ -39,6 +39,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.data.dataFavorites.FavouriteItem
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.data.dataFavorites.FavouriteListItems
+import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.ui.theme.gilroyFontFamily
 
 @Preview
 @Composable
@@ -131,7 +132,8 @@ fun ProductBeverages(product: FavouriteItem) {
                     text = product.title,
                     style = MaterialTheme.typography.bodyLarge.copy(
                         fontWeight = FontWeight.Bold,
-                        fontSize = 20.sp
+                        fontSize = 20.sp,
+                        fontFamily = gilroyFontFamily
                     ),
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
@@ -140,6 +142,7 @@ fun ProductBeverages(product: FavouriteItem) {
                     text = product.content,
                     style = MaterialTheme.typography.bodyLarge.copy(
                         fontSize = 16.sp,
+                        fontFamily = gilroyFontFamily,
                         color = Color(124, 124, 124)
                     ),
                     modifier = Modifier.padding(top = 4.dp)
@@ -156,7 +159,8 @@ fun ProductBeverages(product: FavouriteItem) {
                     text = "\$${product.price}",
                     style = MaterialTheme.typography.bodyLarge.copy(
                         fontWeight = FontWeight.Bold,
-                        fontSize = 18.sp
+                        fontSize = 18.sp,
+                        fontFamily = gilroyFontFamily
                     )
                 )
                 androidx.compose.material3.Button(

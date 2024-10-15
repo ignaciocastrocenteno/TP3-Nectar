@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.data.dataEgg.Egg
 import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.data.dataEgg.EggListItems
+import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.ui.theme.gilroyFontFamily
 
 
 @Preview
@@ -32,6 +33,7 @@ import com.nectar.grupo13.proyectofinal.ya22c.tp3.ort.edu.ar.data.dataEgg.EggLis
 fun SearchScreen() {
     var searchText by remember { mutableStateOf("") }
 
+    // Search Wrapper
     Scaffold(
         topBar = {
             NavigationBar(
@@ -50,6 +52,7 @@ fun SearchScreen() {
                         Icon(Icons.Default.Menu, contentDescription = "Menú")
                     }
                     Spacer(modifier = Modifier.weight(0.7f))
+                    // Main Title
                     Text(
                         text = "Search",
                         fontSize = 28.sp,
@@ -66,6 +69,7 @@ fun SearchScreen() {
                     .fillMaxSize()
                     .padding(innerPadding)
             ) {
+                // Searchbar placeholder text
                 TextField(
                     value = searchText,
                     onValueChange = { searchText = it },
@@ -77,19 +81,11 @@ fun SearchScreen() {
                     leadingIcon = {
                         Icon(Icons.Default.Search, contentDescription = "Search Icon")
                     },
-
                     shape = RoundedCornerShape(16.dp),
-//                    colors = TextFieldDefaults.textFieldColors(
-//                        containerColor = Color(242, 243, 242),
-//                        focusedIndicatorColor = Color.Transparent,
-//                        unfocusedIndicatorColor = Color.Transparent
-//                    )
                 )
-
                 LazyColumn(
                     modifier = Modifier
                         .fillMaxWidth()
-                        //.padding(innerPadding)
                 ) {
                     item {
                         LazyRow(
@@ -102,7 +98,6 @@ fun SearchScreen() {
                             }
                         }
                     }
-
                     item {
                         LazyRow(
                             contentPadding = PaddingValues(horizontal = 1.dp)
@@ -114,7 +109,6 @@ fun SearchScreen() {
                             }
                         }
                     }
-
                     item {
                         LazyRow(
                             contentPadding = PaddingValues(horizontal = 1.dp)
@@ -126,14 +120,8 @@ fun SearchScreen() {
                             }
                         }
                     }
-
-
                     }
-
-
-
-
-                }
+            }
         },
     )
 }
@@ -164,8 +152,6 @@ fun ProductCardEgg(product: Egg) {
                 painter = painterResource(id = imageResId),
                 contentDescription = product.title,
                 modifier = Modifier
-//                    .width(150.dp)
-//                    .height(120.dp)
                     .width(100.dp)
                     .height(75.dp)
                     .padding(top = 30.dp)
@@ -183,8 +169,9 @@ fun ProductCardEgg(product: Egg) {
                 Text(
                     text = product.title,
                     style = MaterialTheme.typography.bodyLarge.copy(
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 20.sp
+                        fontSize = 20.sp,
+                        fontFamily = gilroyFontFamily,
+                        fontWeight = FontWeight.W700
                     ),
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
@@ -193,6 +180,8 @@ fun ProductCardEgg(product: Egg) {
                     text = product.content,
                     style = MaterialTheme.typography.bodyLarge.copy(
                         fontSize = 16.sp,
+                        fontFamily = gilroyFontFamily,
+                        fontWeight = FontWeight.W700,
                         color = Color(124, 124, 124)
                     ),
                     modifier = Modifier.padding(top = 4.dp)
@@ -208,7 +197,8 @@ fun ProductCardEgg(product: Egg) {
                 Text(
                     text = "\$${product.price}",
                     style = MaterialTheme.typography.bodyLarge.copy(
-                        fontWeight = FontWeight.Bold,
+                        fontFamily = gilroyFontFamily,
+                        fontWeight = FontWeight.W700,
                         fontSize = 18.sp
                     )
                 )
