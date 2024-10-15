@@ -55,7 +55,7 @@ class MainActivity : ComponentActivity() {
 
 //// SELECT LOCATION SCREEN
 //                SelectLocationScreen()
-            CategoriesScreen()
+            SearchScreen()
             /*
             Text merge
              */
