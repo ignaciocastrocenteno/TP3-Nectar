@@ -55,6 +55,9 @@ class MainActivity : ComponentActivity() {
 //// SELECT LOCATION SCREEN
 //                SelectLocationScreen()
                 ProductDetailScreen()
+            /*
+            Text merge
+             */
             }
         }
     }
